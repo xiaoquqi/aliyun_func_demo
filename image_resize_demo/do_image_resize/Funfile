@@ -1,0 +1,3 @@
+
+RUNTIME python2.7
+RUN fun-install pip install pillow
