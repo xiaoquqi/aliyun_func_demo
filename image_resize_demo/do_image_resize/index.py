@@ -21,7 +21,7 @@ def handler(event, context):
 
     # NOTE(Ray): If the service ran in local, use Auth method.
     local = bool(os.getenv("local", ""))
-    if (local):
+    if local:
         logging.info("Running function in local...")
         auth = oss2.Auth(creds.access_key_id,
                          creds.access_key_secret)
@@ -33,8 +33,12 @@ def handler(event, context):
     # Parse the event to get the source object info.
     evt = evt_list["events"][0]
     source_bucket_name = evt["oss"]["bucket"]["name"]
-    #endpoint = "oss-" + evt["region"] + "-internal.aliyuncs.com"
-    endpoint = "oss-" + evt["region"] + ".aliyuncs.com"
+
+    if local:
+        endpoint = "oss-" + evt["region"] + ".aliyuncs.com"
+    else:
+        endpoint = "oss-" + evt["region"] + "-internal.aliyuncs.com"
+
     source_bucket = oss2.Bucket(auth, endpoint, source_bucket_name)
     object_name = evt["oss"]["object"]["key"]
 
