@@ -1,0 +1,4 @@
+RUNTIME python2.7
+RUN fun-install pip install baidu-aip
+RUN fun-install pip install sqlalchemy
+RUN fun-install pip install pymysql
