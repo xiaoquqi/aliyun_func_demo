@@ -12,9 +12,9 @@ from baidu_face import BaiduFace
 from db.models import Base, Person, Face
 
 # Baidu
-APP_ID = "18547158"
-API_KEY = "XdVvubLK5Pn1wjGdGEmrU7zn"
-SECRET_KEY = "mj7FoorzEaaIxCMiofCG9oGCSPwQjHtQ"
+APP_ID = os.getenv("BAIDU_APP_ID", "")
+API_KEY = os.getenv("BAIDU_API_KEY", "")
+SECRET_KEY = os.getenv("BAIDU_SECRET_KEY", "")
 
 IMAGE_TYPE = "URL"
 DEFAULT_GROUP = "AliyunFunctionDemoGroup"
@@ -26,12 +26,12 @@ DEFAULT_OPTIONS = {
 }
 
 # Database
-DB_USER = "func_compute"
-DB_PASSWORD = "P@ssw0rd"
-DB_NAME = "face_recognition"
+DB_USER = os.getenv("DB_USER", "")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "")
+DB_NAME = os.getenv("DB_NAME", "")
 DB_CHARSET = "charset=utf8"
-DB_EXTERNAL_HOST = "rm-2ze42t12m819480ewqo.mysql.rds.aliyuncs.com"
-DB_INTERNAL_HOST = "rm-2ze42t12m819480ew125010.mysql.rds.aliyuncs.com"
+DB_EXTERNAL_HOST = os.getenv("DB_EXTERNAL_HOST", "")
+DB_INTERNAL_HOST = os.getenv("DB_INTERNAL_HOST", "")
 
 # Get current run model
 LOCAL = bool(os.getenv("local", ""))

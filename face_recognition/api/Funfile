@@ -1,0 +1,5 @@
+
+RUNTIME python2.7
+RUN fun-install pip install Flask
+RUN fun-install pip install flask_sqlalchemy
+RUN fun-install pip install pymysql
